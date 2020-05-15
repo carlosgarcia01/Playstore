@@ -1,0 +1,24 @@
+* src
++---* app
+|    +---* payment-details
+|    |    |-- payment-details.componts.ts|hmtl|css
+|    |    +--* payment-detail
+|    |    |  |--payment-detail.component.ts|hmtl|css
+|    |    |
+|    |    +--* payment-detail-list
+|    |    |  |-- payment-detail-list.component.ts|hmtl|css
+|    |    |
+|    |    +--* shared
+|    |    |  |-- payment-detail.service.ts 
+|    |    |
+|    |    +--* models
+|    |       |-- payment-detail.model.ts
+|    +---* user
+|    |   |-- user.component.ts|hmtl|css
+|    |   |
+|    |   +--* user-list
+|    |   |  |--user-list.component.ts|hmtl|css
+|    |   |
+|    +---* category      
+|    |-- app.module.ts
+|-- index.hmtl
