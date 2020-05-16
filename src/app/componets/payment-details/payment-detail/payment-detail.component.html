@@ -1,4 +1,4 @@
-<form [formGroup]="paymentForm" autocomplete="off" >
+<form [formGroup]="getPaymentForm" autocomplete="off" (ngSubmit)="save()">
   <div class="form-group">
     <div class="input-group">
       <div class="input-group-append">
@@ -6,14 +6,12 @@
           <i class="fas fa-user-circle"></i>
         </div>
       </div>
-        <input formControlName="cardOwnerName" 
-              type="text"          
-              placeholder="Card owner name"
-
-              [ngClass]="(paymentForm.controls['cardOwnerName'].valid)? 'is-invalid':'is-valid'"
-              class="form-control "
-              required>
+      <input formControlName="cardOwnerName" type="text" placeholder="Card owner name"
+        [class.is-invalid]="invalidCardOwnerName" class="form-control ">
     </div>
+    <small *ngIf="invalidCardOwnerName" class="text-danger">
+      Enter Name
+    </small>
   </div>
 
   <div class="form-group">
@@ -23,17 +21,16 @@
           <i class="far fa-credit-card"></i>
         </div>
       </div>
-        <input formControlName="CardNumber" 
-              type="text" 
-              placeholder="Card number"
-              
-              class="form-control"
-              
-              required
-              maxlength="16" 
-              minlength="16">
+
+      <input formControlName="CardNumber" type="text" placeholder="Card number" [class.is-invalid]="invalidCardNumber"
+        class="form-control" maxlength="16">
     </div>
+    <small *ngIf="invalidCardNumber" class="text-danger">
+      Enter Card Number 16 character
+    </small>
   </div>
+
+
 
   <div class="form-row">
 
@@ -44,16 +41,12 @@
             <i class="far fa-calendar-alt"></i>
           </div>
         </div>
-          <input formControlName="ExpirationDate" 
-                type="text" 
-                placeholder="MM/YY"
-                
-                class="form-control"
-                
-                required
-                maxlength="5" 
-                minlength="5">
+        <input formControlName="ExpirationDate" type="text" placeholder="MM/YY"
+          [class.is-invalid]="invalidExpirationDate" class="form-control" maxlength="5">
       </div>
+      <small *ngIf="invalidExpirationDate" class="text-danger">
+        Enter Card Expiration date
+      </small>
     </div>
 
     <div class="form-group col-md-5">
@@ -63,23 +56,19 @@
             <i class="fas fa-key"></i>
           </div>
         </div>
-          <input formControlName="CVV" 
-                type="password" 
-                placeholder="CVV"
-                
-                class="form-control "
-                
-                required
-                maxlength="3" 
-                minlength="3">
+        <input formControlName="CVV" type="password" placeholder="CVV" [class.is-invalid]="invalidCVV"
+          class="form-control " maxlength="3">
       </div>
+      <small *ngIf="invalidCVV" class="text-danger">
+        Enter CVV
+      </small>
     </div>
   </div>
   <div class="form-group">
-    <button type="submit" class="btn btn-success btn-lg btn-block" >
+    <button type="submit" [disabled]="getPaymentForm.invalid" class="btn btn-success btn-lg btn-block">
       <i class="fas fa-database"></i>
       Submit
     </button>
   </div>
-  
+
 </form>
