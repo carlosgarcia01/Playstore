@@ -1,0 +1,131 @@
+<form [formGroup]="getUserForm" (submit)="save()" autocomplete="off">
+  <div class="form-group">
+    <div class="input-group">
+      <div class="form-group-append">
+        <div class="input-group-text bg-white">
+          <i class="fas fa-user-circle py-1"></i>
+        </div>
+      </div>
+      <input type="text" 
+             formControlName="Username" 
+             placeholder="Username" 
+             class="form-control"
+             [class.is-invalid]="invalidUserName">
+    </div>
+    <small *ngIf="invalidUserName" class="text-danger">
+      Enter Username
+    </small>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="form-group-append">
+        <div class="input-group-text bg-white">
+          <i class="fas fa-unlock-alt py-1"></i>
+        </div>
+      </div>
+      <input type="password" 
+             formControlName="Password" 
+             placeholder="Password" 
+             class="form-control"
+             [class.is-invalid]="invalidPassword">
+    </div>
+    <small *ngIf="invalidPassword" class="text-danger">
+      Enter Password
+    </small>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="form-group-append">
+        <div class="input-group-text bg-white">
+          <i class="fas fa-envelope py-1"></i>
+        </div>
+      </div>
+      <input type="text" 
+             formControlName="Email" 
+             placeholder="Email" 
+             class="form-control"
+             [class.is-invalid]="invalidEmail">
+    </div>
+    <small *ngIf="invalidEmail" class="text-danger">
+      Enter Email
+    </small>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <div class="input-group">
+        <div class="form-group-append">
+          <div class="input-group-text bg-white">
+            <i class="fas fa-user-clock py-1"></i>
+          </div>
+        </div>
+        <input type="number" 
+               formControlName="Age" 
+               placeholder="Age" 
+               class="form-control"
+               [class.is-invalid]="invalidAge">
+      </div>
+      <small *ngIf="invalidAge" class="text-danger">
+        Enter Age
+      </small>
+    </div>
+
+    <div class="form-group col-md-7">
+      <div class="input-group">
+        <div class="form-group-append">
+          <div class="input-group-text bg-white">
+            <i class="fas fa-id-card py-1"></i>
+          </div>
+        </div>
+        <input type="number" 
+               formControlName="Document" 
+               placeholder="Document" 
+               class="form-control"
+               [class.is-invalid]="invalidDocument">
+      </div>
+      <small *ngIf="invalidDocument" class="text-danger">
+        Enter Document
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <div class="form-group-append">
+        <div class="input-group-text bg-white">
+          <i class="fas fa-phone-square py-1"></i>
+        </div>
+      </div>
+      <input type="text" 
+             formControlName="Phone" 
+             placeholder="Phone`" 
+             class="form-control"
+             [class.is-invalid]="invalidPhone">
+    </div>
+    <small *ngIf="invalidPhone" class="text-danger">
+      Enter Phone
+    </small>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="form-group-append">
+        <div class="input-group-text bg-white">
+          <i class="fas fa-image py-1"></i>
+        </div>
+      </div>
+      <input type="text" 
+             formControlName="ImageUrl" 
+             placeholder="Ensert Image url" 
+             class="form-control"
+             [class.is-invalid]="invalidImageUrl">
+    </div>
+    <small *ngIf="invalidImageUrl" class="text-danger">
+      Enter Image url
+    </small>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-success btn-block btn-lg"> 
+      <i class="fas fa-save"></i>
+      Register</button>
+  </div>
+</form>

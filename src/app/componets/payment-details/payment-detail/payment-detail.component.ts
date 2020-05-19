@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PaymentDetailService } from 'src/app/providers/payment-detail.service';
 import { FormGroup,FormBuilder, FormControlName, Validators } from '@angular/forms';
 import { PaymentDetail } from 'src/app/models/payment-detail.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-payment-detail',
@@ -13,7 +14,8 @@ export class PaymentDetailComponent implements OnInit {
   private paymentForm:FormGroup;
   
   constructor(private _paymentDetail:PaymentDetailService,
-              private fb:FormBuilder) 
+              private fb:FormBuilder,
+              private toastr:ToastrService) 
               { this.createForm()}
     
 
@@ -57,18 +59,18 @@ export class PaymentDetailComponent implements OnInit {
   });
  }
 
+
  save(){
    if(this.paymentForm.invalid)
      return Object.values(this.paymentForm.controls).forEach(x => x.markAllAsTouched())
 
    let data:PaymentDetail = new PaymentDetail();
-/*     data.CardOwnerName = this.paymentForm.get('cardOwnerName').value;
-    data.CardNumber = this.paymentForm.get('CardNumber').value;
-    data.ExpirationDate = this.paymentForm.get('ExpirationDate').value;
-    data.CVV = this.paymentForm.get('CVV').value; */
     this._paymentDetail.postPaymentDetail(this.paymentForm.value)
         .subscribe(
-          res => {this.paymentForm.reset},
+          res => {
+            this.paymentForm.reset,
+            this.toastr.success('Submitted Successfully','Payment Detail Register');
+          },
           err => {console.log(err)}
         ); 
  }

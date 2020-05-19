@@ -1,1 +1,18 @@
-<p>app-payment-detail works</p>
+<table class="table table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th>Card Owner Name</th>
+      <th>Card Number</th>
+      <th>Expiration Date</th>
+      <th>CVV</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let payment of paymentDetailList">
+      <td>{{payment.CardOwnerName}}</td>
+      <td>{{payment.CardNumber}}</td>
+      <td>{{payment.ExpirationDate}}</td>
+      <td>{{payment.CVV}}</td>
+    </tr>
+  </tbody>
+</table>
